@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ed">
+  <title>Panacea Mobile · Portfolio Demo</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, sans-serif; color:#172d2a; background:#f6f4ed; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    button, input { font:inherit; }
+    button:focus-visible, input:focus-visible { outline:3px solid #e58b4c; outline-offset:3px; }
+    .page { max-width:1120px; min-height:100vh; margin:auto; padding:42px 28px; display:grid; grid-template-columns:minmax(0,1fr) 390px; gap:72px; align-items:center; }
+    .eyebrow { font-size:.74rem; font-weight:750; letter-spacing:.15em; text-transform:uppercase; color:#5c7c70; }
+    h1 { font-family:Georgia,serif; font-weight:400; letter-spacing:-.045em; font-size:clamp(3.3rem,7vw,5.8rem); line-height:.98; margin:24px 0; }
+    h1 span { color:#b05b3c; font-style:italic; }
+    .intro { font-size:1.1rem; max-width:37rem; line-height:1.7; color:#4a5c55; }
+    .taglist { display:flex; flex-wrap:wrap; gap:9px; margin:28px 0; }
+    .tag { padding:8px 12px; border:1px solid #c9d3c6; border-radius:50px; font-size:.75rem; font-weight:700; }
+    .note { max-width:36rem; border-left:3px solid #cf8c63; padding-left:16px; color:#56665d; font-size:.88rem; line-height:1.65; }
+    .phone { border:8px solid #1f3430; border-radius:38px; background:#f9f9f4; box-shadow:0 30px 70px #223c2a28; overflow:hidden; }
+    .screen { min-height:690px; display:flex; flex-direction:column; }
+    .top { display:flex; justify-content:space-between; align-items:center; padding:23px 22px 18px; }
+    .brand { font-family:Georgia,serif; font-size:1.25rem; letter-spacing:-.04em; font-weight:bold; }
+    .brand i { color:#b26748; font-style:normal; }
+    .demo { border-radius:50px; background:#e6eee5; color:#315e4b; padding:6px 9px; font-size:.65rem; font-weight:800; letter-spacing:.06em; }
+    .main { padding:0 20px 24px; flex:1; }
+    .hello { font-size:.7rem; color:#697b6e; margin:3px 0 6px; }
+    .greeting { font-family:Georgia,serif; font-size:1.65rem; font-weight:normal; margin:0 0 20px; letter-spacing:-.03em; }
+    .hero { background:#315e4b; border-radius:18px; color:#fff; min-height:127px; padding:18px; position:relative; overflow:hidden; }
+    .hero:after { content:''; position:absolute; right:-34px; top:-36px; width:150px; height:150px; border:1px solid #ffffff50; border-radius:50%; box-shadow:0 0 0 18px #ffffff0a,0 0 0 38px #ffffff0a; }
+    .hero small { text-transform:uppercase; font-weight:700; letter-spacing:.12em; font-size:.6rem; color:#d9e7db; }
+    .hero p { font-family:Georgia,serif; font-size:1.45rem; line-height:1.17; max-width:175px; margin:9px 0 0; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; margin:23px 0 12px; }
+    h2 { font-size:.95rem; margin:0; }
+    .section-title span { color:#6b7f72; font-size:.7rem; }
+    .room-list { display:grid; gap:9px; }
+    .room { border:1px solid #dce5db; background:white; width:100%; display:flex; align-items:center; gap:12px; text-align:left; border-radius:14px; padding:9px; color:inherit; cursor:pointer; }
+    .room[aria-pressed="true"] { border-color:#315e4b; background:#f2f7f1; box-shadow:0 0 0 1px #315e4b; }
+    .room-art { flex:0 0 58px; width:58px; height:58px; border-radius:10px; background:linear-gradient(135deg,#d3d7b1,#879e7f); display:grid; place-items:center; color:#fff; font-size:1.45rem; }
+    .room:nth-child(2) .room-art { background:linear-gradient(135deg,#ebc6a4,#b97658); }
+    .room strong,.room small { display:block; }
+    .room strong { font-size:.8rem; margin-bottom:4px; }
+    .room small { color:#718077; font-size:.68rem; }
+    .room .check { margin-left:auto; color:#315e4b; font-size:1rem; }
+    .booking { margin-top:19px; }
+    .booking label { display:block; font-size:.72rem; font-weight:700; margin-bottom:8px; }
+    .booking input { width:100%; border:1px solid #d4dfd5; border-radius:10px; padding:11px; background:#fff; color:#273c31; }
+    .book { margin-top:11px; width:100%; border:0; border-radius:11px; padding:13px; color:#fff; background:#315e4b; font-weight:700; cursor:pointer; }
+    .book:hover { background:#24493a; }
+    .result { font-size:.72rem; line-height:1.5; color:#45634f; min-height:2.3em; margin:10px 0 0; }
+    .bottom { border-top:1px solid #e1e9df; display:flex; justify-content:space-around; padding:13px 8px; color:#83918a; font-size:.65rem; }
+    .bottom strong { color:#315e4b; }
+    @media (max-width:800px) { .page { grid-template-columns:1fr; gap:32px; padding:30px 20px 48px; } .phone { max-width:390px; width:100%; margin:auto; } h1 { font-size:clamp(3rem,13vw,5rem); } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main>
+      <p class="eyebrow">Portfolio project · Android experience</p>
+      <h1>Thoughtful stays,<br><span>on the go.</span></h1>
+      <p class="intro">A lightweight, interactive illustration of a mobile booking journey, inspired by the Panacea team project. Explore a room and try the sample booking flow.</p>
+      <p class="eyebrow">Original project technology</p>
+      <div class="taglist" aria-label="Original project technology"><span class="tag">Android · Java</span><span class="tag">REST API</span><span class="tag">SQLite</span><span class="tag">Team project</span></div>
+      <p class="note"><strong>Portfolio reconstruction.</strong> This page is a standalone HTML, CSS, and JavaScript browser mockup, not the original Android app. Rooms and details are fictional. No booking, payment, login, or data transmission takes place.</p>
+    </main>
+    <section class="phone" aria-label="Interactive mobile booking mockup">
+      <div class="screen">
+        <header class="top"><span class="brand">pana<i>c</i>ea</span><span class="demo">PORTFOLIO DEMO</span></header>
+        <div class="main">
+          <p class="hello">A MOMENT FOR YOURSELF</p>
+          <p class="greeting">Find your calm.</p>
+          <div class="hero"><small>Stay well, feel well</small><p>Your next restful moment awaits.</p></div>
+          <div class="section-title"><h2>Explore rooms</h2><span>2 sample rooms</span></div>
+          <div class="room-list" role="group" aria-label="Choose a sample room">
+            <button class="room" type="button" aria-pressed="true" data-room="Garden Room"><span class="room-art" aria-hidden="true">✳</span><span><strong>Garden Room</strong><small>Quiet view · 2 guests</small></span><span class="check" aria-hidden="true">✓</span></button>
+            <button class="room" type="button" aria-pressed="false" data-room="Sunrise Suite"><span class="room-art" aria-hidden="true">☼</span><span><strong>Sunrise Suite</strong><small>Warm light · 2 guests</small></span><span class="check" aria-hidden="true"></span></button>
+          </div>
+          <form class="booking" id="booking-form">
+            <label for="stay-date">Choose a sample date</label>
+            <input id="stay-date" type="date" required>
+            <button class="book" type="submit">Preview booking</button>
+            <p class="result" id="result" role="status" aria-live="polite">No information is sent or saved.</p>
+          </form>
+        </div>
+        <footer class="bottom" aria-label="Illustrative navigation"><strong>Explore</strong><span>Bookings</span><span>Offers</span><span>Account</span></footer>
+      </div>
+    </section>
+  </div>
+  <script>
+    const rooms = document.querySelectorAll('.room');
+    const result = document.getElementById('result');
+    let selectedRoom = 'Garden Room';
+    rooms.forEach((room) => room.addEventListener('click', () => {
+      selectedRoom = room.dataset.room;
+      rooms.forEach((item) => {
+        const selected = item === room;
+        item.setAttribute('aria-pressed', String(selected));
+        item.querySelector('.check').textContent = selected ? '✓' : '';
+      });
+      result.textContent = 'Selected: ' + selectedRoom + '. No information is sent or saved.';
+    }));
+    document.getElementById('booking-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const date = document.getElementById('stay-date').value;
+      if (!date) return;
+      result.textContent = 'Preview: ' + selectedRoom + ' · ' + date + '. This is not a real reservation.';
+    });
+  </script>
+</body>
+</html>
